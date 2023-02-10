@@ -1,0 +1,28 @@
+<body>
+<div class="container">
+  <img src="assets/short.jpg" alt="description of image">
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="longUrl">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="datetime-local" [(ngModel)]="expiresDate">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="convertToShortUrl(longUrl, expiresDate)">
+    Convert to Short URL
+  </button>
+  <br><br>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="shortUrl">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="redirectToOriginalUrl(shortUrl)">
+    Redirect to Original URL
+  </button>
+</div>
+<br><br>
+<div class="center">
+  <h3>Last 5 Shortened URLs:</h3>
+  <mat-list>
+    <mat-list-item *ngFor="let url of urls">{{url}}</mat-list-item>
+  </mat-list>
+</div>
+</body>
