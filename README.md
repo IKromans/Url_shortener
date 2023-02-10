@@ -20,3 +20,5 @@ To run application:
   >back-end and database will be available on "http://localhost:8080/h2-console"
   
   >main page will available on "http://localhost:4200/"
+  
+![Screenshot 2023-02-10 132248](https://user-images.githubusercontent.com/66387211/218080856-b4514a3f-b4ba-4e39-b3a0-09f4e89d3f44.jpg)
