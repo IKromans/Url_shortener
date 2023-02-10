@@ -4,6 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.URL;
 import java.util.Date;
 
 @Service
@@ -19,6 +20,9 @@ class UrlService {
     }
 
     String convertLongUrlToShortUrl(UrlLongRequest request) {
+        if (!isValidUrl(request.getLongUrl())) {
+            throw new IllegalArgumentException("Invalid URL: " + request.getLongUrl());
+        }
         var url = new Url();
         url.setLongUrl(request.getLongUrl());
         url.setExpiresDate(request.getExpiresDate());
@@ -26,6 +30,16 @@ class UrlService {
         var entity = urlRepository.save(url);
         return urlConversion.encode(entity.getId());
     }
+
+    private boolean isValidUrl(String url) {
+        try {
+            new URL(url).toURI();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 
     String getOriginalUrl(String shortUrl) {
         var id = urlConversion.decode(shortUrl);

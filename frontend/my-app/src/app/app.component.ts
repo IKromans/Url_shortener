@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {MatDialog} from '@angular/material/dialog';
+import {ErrorModalComponent} from './error-modal/error-modal.component';
+import {SuccessModalComponent} from './success-modal/success-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +15,7 @@ export class AppComponent {
   shortUrl = '';
   urls: string[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public dialog: MatDialog) {
   }
 
   convertToShortUrl(longUrl: string, expiresDate: string) {
@@ -32,19 +35,24 @@ export class AppComponent {
           this.longUrl = '';
           this.expiresDate = '';
           this.urls.unshift(this.shortUrl);
+          this.dialog.open(SuccessModalComponent);
           if (this.urls.length > 5) {
             this.urls.pop();
           }
         },
         error => {
-          console.error('An error occurred:', error);
+          let errorMessage = "Url is not valid, check if protocol is included, please try again.";
+          if (error.error && error.error.message) {
+            errorMessage = error.error.message;
+          }
+          this.dialog.open(ErrorModalComponent, {
+            data: {errorMessage: errorMessage}
+          });
         }
       );
-
   }
 
   redirectToOriginalUrl(shortUrl: string) {
     window.location.href = `http://localhost:8080/my-app/${shortUrl}`;
   }
-
 }

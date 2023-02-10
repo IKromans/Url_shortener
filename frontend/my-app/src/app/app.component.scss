@@ -28,6 +28,7 @@ body {
 
 mat-form-field {
   width: 50%;
+  max-width: 750px;
   height: 65px;
   margin-bottom: 2px;
 }
@@ -39,6 +40,7 @@ mat-form-field {
 
 input[type="text"], input[type="datetime-local"] {
   width: 100%;
+  min-width: 140px;
   height: 50px;
   font-size: 16px;
   margin: 2px 0;
@@ -46,9 +48,10 @@ input[type="text"], input[type="datetime-local"] {
 }
 
 button {
-  height: 50px;
+  height: 80px;
   min-width: 140px;
   width: 50%;
+  max-width: 750px;
   margin-top: 8px;
   margin-bottom: 16px;
   background-color: #4caf50;
