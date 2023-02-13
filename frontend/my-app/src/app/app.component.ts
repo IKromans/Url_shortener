@@ -53,6 +53,6 @@ export class AppComponent {
   }
 
   redirectToOriginalUrl(shortUrl: string) {
-    window.location.href = `http://localhost:8080/my-app/${shortUrl}`;
+    window.open(`http://localhost:8080/my-app/${shortUrl}`, '_blank');
   }
 }
