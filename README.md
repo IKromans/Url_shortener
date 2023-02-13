@@ -21,4 +21,4 @@ To run application:
   
   >main page will available on "http://localhost:4200/"
   
-![Screenshot 2023-02-10 132248](https://user-images.githubusercontent.com/66387211/218080856-b4514a3f-b4ba-4e39-b3a0-09f4e89d3f44.jpg)
+https://user-images.githubusercontent.com/66387211/218437075-01676379-2f75-478e-88f0-9b5d4fd38958.mp4
